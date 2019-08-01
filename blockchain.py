@@ -175,12 +175,24 @@ class Blockchain:
         self.__peer_nodes.add(node)
         self.save_data()
 
+    def add_peer_node(self, node):
+        """Adds a new node to the peer node set.
+
+        Arguments:
+            :node: The node URL which should be added.
+        """
+        self.__peer_nodes.add(node)
+        self.save_data()
+        
     def remove_peer_node(self, node):
-         """Removes a  node from the peer node set.
+        """Removes a node from the peer node set.
 
         Arguments:
             :node: The node URL which should be removed.
         """
-
         self.__peer_nodes.discard(node)
         self.save_data()
+
+    def get_peer_nodes(self):
+        """Return a list of all connected peer nodes."""
+        return list(self.__peer_nodes)
