@@ -223,7 +223,6 @@
             },
             methods: {
                 onCreateWallet: function () {
-                    // Send Http request to create a new wallet (and return keys)
                     var vm = this;
                     this.walletLoading = true
                     axios.post('/wallet')
@@ -267,7 +266,6 @@
                         });
                 },
                 onSendTx: function () {
-                    // Send Transaction to backend
                     this.txLoading = true;
                     var vm = this;
                     axios.post('/transaction', {
@@ -303,7 +301,6 @@
                 },
                 onLoadData: function () {
                     if (this.view === 'chain') {
-                        // Load blockchain data
                         var vm = this
                         this.dataLoading = true
                         axios.get('/chain')
@@ -316,7 +313,6 @@
                                 vm.error = 'Something went wrong.'
                             });
                     } else {
-                        // Load transaction data
                         var vm = this
                         axios.get('/transactions')
                             .then(function (response) {
