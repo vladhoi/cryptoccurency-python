@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/vladgoy/anaconda3/envs/pycoin/bin/python"
+    "python.pythonPath": "/Users/vladgoy/anaconda3/envs/pycoin/bin/python",
+    "python.linting.pep8Enabled": true
 }
