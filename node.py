@@ -116,10 +116,15 @@ def broadcast_block():
             response = {
                 'message': 'Block seems invalid'
             }
-            return response, 500
-            
+            return response, 409
+
     elif block['index'] > blockchain.chain[-1].index + 1:
-        pass
+        response = {
+            'massage': 'Blockchain seems to differ from local blockchain.'
+        }
+        blockchain.resolve_conflicts = True
+        return jsonify(response), 200
+
     else:
         response = {
             'massage': 'Blockchain seems to be shorter, block not added.'
@@ -188,6 +193,12 @@ def add_transaction():
 
 @app.route('/mine', methods=['POST'])
 def mine():
+    if blockchain.resolve_conflicts:
+        response = {
+            'message': 'Resolve conflicts first, block not added.'
+        }
+        return jsonify(response), 409
+        
     block = blockchain.mine_block()
     if block != None:
         dict_block = block.__dict__.copy()
