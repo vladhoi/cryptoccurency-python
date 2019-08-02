@@ -313,6 +313,7 @@
                                 vm.error = 'Something went wrong.'
                             });
                     } else {
+                        // Load transaction data
                         var vm = this
                         axios.get('/transactions')
                             .then(function (response) {
